@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Day 6 oops task</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
 </head>
-<body>
-  <script>// 1. a) Write a constructor for the class Movie, which takes a String representing the title of the movie, 
-    // a String representing the studio, and a String representing the rating as its arguments, and sets the 
-    // respective class properties to these values.
-    
-    class movie {
-      constructor(title, studio, rating) {
-        this.title = title;
-        this.studio = studio;
-        this.rating = rating;
-      }
-    
-      getrating() {
-        return "the rating is  " + this.rating;
-      }
-    }
-    
-    
-    // b) The constructor for the class Movie will set the class property rating to "PG" as default when no rating is provided.
-     
-    class rating {
-        constructor(title, studio, rating){
-            this.title = title;
-            this.studio = studio;
-            this.rating = "PG";
-        }
-    }
-    
-    // d) Write a piece of code that creates an instance of the class Movie with the title “Casino Royale”,
-    // the studio “Eon Productions”, and the rating “PG­13”
-    
-    const CasinoRoyale = new movie( "Casino Royal", "Eon Productions", "PG13");</script>
+<body><script>
+    class Movie {
+  // step a)                 // step b)
+  constructor(title, studio, rating="PG13") {
+    this.title = title;
+    this.studio = studio;
+    this.rating = rating;
+    this.ratingTypes = ["R", "U", "PG13"];
+  }
+
+  getTitle() {
+    return this.title;
+  }
+
+  getStudio() {
+    return this.studio;
+  }
+}
+
+// step 4
+const casinoRoyale = new Movie("Casino Royale", "Eon Productions", "PG­13");
+console.log(casinoRoyale.getTitle());
+console.log(casinoRoyale.getStudio());
+console.log(casinoRoyale.ratingTypes);
+
+
+/* Filter PG13 Movies */
+const eternals = new Movie("Eternals", "Marvel Studios", "PG13");
+const deadpool = new Movie("Deadpool", "Marvel Studios", "R");
+const shrek = new Movie("Shrek", "Dream Works", "U");
+const findingNemo = new Movie("Finding Nemo", "Pixar", "U");
+const interstellar = new Movie("Interstallar", "Warner Bros", "PG13");
+
+const moviesArr = [eternals, deadpool, shrek, findingNemo, interstellar];
+
+// step 3
+const pg13Movies = function getPG(moviesArr) { 
+  return moviesArr.filter((movie) => movie.rating === "PG13");
+}
+
+console.log(pg13Movies(moviesArr));
+
+</script>
 </body>
 </html>
